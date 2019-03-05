@@ -1,19 +1,22 @@
 import lcddriver
 from time import *
 from flask import Flask, render_template
-from flask_socketio import SocketIO
-lcd = lcddriver.lcd()
-lcd.lcd_display_string("Bitajor.com", 1)
+from flask_socketio import SocketIO, send
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret'
+app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
+
 @app.route('/')
 def index():
-	return "hello"
-@socketio.on('message')
-def handMessage(msg):
-	print('menssage'+msg)
-	send(msg,broadcast=True)
+    return render_template('index.html')
 
+@socketio.on('message')
+def handleMessage(msg):
+    print('Message: ' + msg)
+    lcd = lcddriver.lcd()
+    lcd.lcd_display_string(msg, 1)	
+    send(msg, broadcast = True)
+	
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app,host='192.168.137.207',port=5000)

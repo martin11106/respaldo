@@ -5,24 +5,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-<script type="text/javascript">
-$(document).ready(function() {
-	var socket = io.connect('http://0.0.0.0:5000');
-	socket.on('connect', function() {
-		socket.send('User has connected!');
-	});
-	socket.on('message', function(msg) {
-		$("#messages").append('<li>'+msg+'</li>');
-		console.log('Received message');
-	});
-	$('#sendbutton').on('click', function() {
-		socket.send($('#myMessage').val());
-		$('#myMessage').val('');
-	});
-});
+<script type="text/javascript">[B
+	const socket = io();
+ function enviar(datos){
+     console.log(local)
+             socket.emit('datos',$("#myMessage").val())
+         }
+	
 </script>
 <ul id="messages"></ul>
 <input type="text" id="myMessage">
-<button id="sendbutton">Send</button>
+<button id="sendbutton" onclick='enviar()'>Send</button>
 </body>
 </html>
