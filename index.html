@@ -3,9 +3,12 @@
 <title>Chat Room</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
-<body>
-<script type="text/javascript">[B
+<body style="background-image: url(http://www.hdfondos.eu/preview/get_photo/568052/1920/1200)">        
+
+<script type="text/javascript">
 	const socket = io();
  function enviar(datos){
      console.log(local)
@@ -14,7 +17,12 @@
 	
 </script>
 <ul id="messages"></ul>
-<input type="text" id="myMessage">
-<button id="sendbutton" onclick='enviar()'>Send</button>
+<div style="margin-top: 200px">    
+    <center>
+        <h1>Ingresa un mensaje</h1>
+        <input type="text" id="myMessage" class="form-control">
+        <button id="sendbutton" onclick='enviar()' class="btn btn-warning">Send</button>
+    </center>
+</div>
 </body>
 </html>
